@@ -13,16 +13,20 @@ namespace _3._2
     public partial class Form1 : Form
     {
         string Str;
+
+        private void Task() {
+            textBox3.Text += "Сформируйте в текстовом поле TextBox строку согласно следующим правилам:\r\n" +
+                  "– исходный текст состоит из строки, содержащей не более 200 символов;\r\n" +
+                  "– в конце каждого предложения есть точка;\r\n" +
+                  "– каждому слову, кроме первого, предшествует один пробел;\r\n" +
+                  "– внутри слов пробелов нет;\r\n" +
+                  "– знаки препинания, если они есть, пишутся сразу после слова.";
+        }
         public Form1()
         {
             InitializeComponent();
             button2.Enabled = false;
-            textBox3.Text += "Сформируйте в текстовом поле TextBox строку согласно следующим правилам:\r\n" +
-                   "– исходный текст состоит из строки, содержащей не более 200 символов;\r\n" +
-                   "– в конце каждого предложения есть точка;\r\n" +
-                   "– каждому слову, кроме первого, предшествует один пробел;\r\n" +
-                   "– внутри слов пробелов нет;\r\n" +
-                   "– знаки препинания, если они есть, пишутся сразу после слова.";
+            Task();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -42,13 +46,6 @@ namespace _3._2
             }
             else
             {
-             /*
-                if (Str.Length > 200)
-                {
-                    check = false;
-                    textBox3.Text += Environment.NewLine + "Сообщение содержит больше 200 символов";
-                }
-            */
                 if (Str[0] == ' ')
                 {
                     check = false;
@@ -105,14 +102,7 @@ namespace _3._2
                 }
                 catch (System.IndexOutOfRangeException) { }
             }
-            if(!check)textBox3.Text += Environment.NewLine + "Сформируйте в текстовом поле TextBox " +
-                "строку согласно следующим правилам:\r\n" +
-                  "– исходный текст состоит из строки, содержащей не более 200 символов;\r\n" +
-                  "– в конце каждого предложения есть точка;\r\n" +
-                  "– каждому слову, кроме первого, предшествует один пробел;\r\n" +
-                  "– внутри слов пробелов нет;\r\n" +
-                  "– знаки препинания, если они есть, пишутся сразу после слова.";
-
+            if (!check) Task();
             if (check)
             {
                 textBox3.Text +="Вариант 2. Если длина строки L больше 15 символов, " +
@@ -123,7 +113,6 @@ namespace _3._2
         private void button2_Click(object sender, EventArgs e)
         {
             
-            //textBox3.Clear();
             textBox2.Clear();           
             if (Str.Trim().Length > 15)
             {
@@ -170,6 +159,7 @@ namespace _3._2
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
+            Task();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
